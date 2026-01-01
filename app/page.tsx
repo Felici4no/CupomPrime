@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SearchBar } from "@/components/search-bar";
@@ -140,6 +141,3 @@ function RecentProducts() {
         </div>
     );
 }
-
-// Add React import at the top
-import * as React from "react";
