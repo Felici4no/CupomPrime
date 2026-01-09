@@ -2,6 +2,8 @@ import { ExternalLink, Clock } from "lucide-react";
 import { formatCurrency, formatDateTime } from "@/lib/utils";
 import { StatusPill } from "./status-pill";
 import { PriceDeltaBadge } from "./price-delta-badge";
+import { Card } from "./ui/card";
+import { Button } from "./ui/button";
 import type { ProductOffer } from "@/types";
 import { trackEvent } from "@/lib/analytics";
 
@@ -10,6 +12,10 @@ interface OfferCardProps {
     productId: string;
 }
 
+/**
+ * Card de oferta por loja
+ * Visual "Puro Suco Indie": borda sketch, timestamp transparente, Δ% contextual
+ */
 export function OfferCard({ offer, productId }: OfferCardProps) {
     const handleAffiliateClick = () => {
         trackEvent("click_affiliate", {
@@ -20,11 +26,11 @@ export function OfferCard({ offer, productId }: OfferCardProps) {
     };
 
     return (
-        <div className="bg-card border rounded-lg p-6">
+        <Card>
             <div className="flex items-start justify-between mb-4">
                 <div>
                     <h3 className="font-semibold text-lg mb-1">{offer.store_display_name}</h3>
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1.5 text-xs text-gray-600">
                         <Clock className="h-3 w-3" />
                         <span>Coletado em {formatDateTime(offer.collected_at)}</span>
                     </div>
@@ -33,7 +39,9 @@ export function OfferCard({ offer, productId }: OfferCardProps) {
             </div>
 
             <div className="mb-4">
-                <p className="text-3xl font-bold">{formatCurrency(offer.current_price)}</p>
+                <p className="text-3xl font-bold font-mono tabular-nums">
+                    {formatCurrency(offer.current_price)}
+                </p>
             </div>
 
             <div className="grid grid-cols-3 gap-4 mb-6">
@@ -62,11 +70,15 @@ export function OfferCard({ offer, productId }: OfferCardProps) {
                 target="_blank"
                 rel="nofollow sponsored noopener noreferrer"
                 onClick={handleAffiliateClick}
-                className="inline-flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-4 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors"
             >
-                Comprar
-                <ExternalLink className="h-4 w-4" />
+                <Button variant="primary" className="w-full">
+                    <span className="flex items-center justify-center gap-2">
+                        Comprar
+                        <ExternalLink className="h-4 w-4" />
+                    </span>
+                </Button>
             </a>
-        </div>
+        </Card>
     );
 }
+

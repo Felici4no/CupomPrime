@@ -50,30 +50,15 @@ export function formatPercentage(value: number, showSign: boolean = true): strin
 export function getStatusColor(status: PriceStatus): string {
     switch (status) {
         case "EXCELLENT":
-            return "text-excellent";
+            return "text-excellent border-excellent";
         case "GOOD":
-            return "text-good";
+            return "text-good border-good";
         case "NEUTRAL":
-            return "text-neutral";
+            return "text-neutral border-neutral";
         case "EXPENSIVE":
-            return "text-expensive";
+            return "text-expensive border-expensive";
         default:
-            return "text-muted-foreground";
-    }
-}
-
-export function getStatusBgColor(status: PriceStatus): string {
-    switch (status) {
-        case "EXCELLENT":
-            return "bg-excellent/10 border-excellent/20";
-        case "GOOD":
-            return "bg-good/10 border-good/20";
-        case "NEUTRAL":
-            return "bg-neutral/10 border-neutral/20";
-        case "EXPENSIVE":
-            return "bg-expensive/10 border-expensive/20";
-        default:
-            return "bg-muted border-border";
+            return "text-gray-600 border-gray-600";
     }
 }
 

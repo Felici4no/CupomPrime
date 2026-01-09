@@ -9,6 +9,10 @@ interface PriceDeltaBadgeProps {
     className?: string;
 }
 
+/**
+ * Badge para exibir Δ% e Δ absoluto
+ * Visual "Puro Suco Indie": cor apenas para informação (positivo/negativo), mono para números
+ */
 export function PriceDeltaBadge({
     percentChange,
     absoluteChange,
@@ -21,15 +25,15 @@ export function PriceDeltaBadge({
 
     const Icon = isNeutral ? Minus : isNegative ? TrendingDown : TrendingUp;
     const colorClass = isNeutral
-        ? "text-muted-foreground"
+        ? "text-gray-600"
         : isNegative
             ? "text-excellent"
             : "text-expensive";
 
     return (
         <div className={cn("flex flex-col gap-0.5", className)}>
-            <span className="text-xs text-muted-foreground">{label}</span>
-            <div className={cn("flex items-center gap-1 font-medium", colorClass)}>
+            <span className="text-xs text-gray-600">{label}</span>
+            <div className={cn("flex items-center gap-1 font-medium font-mono tabular-nums", colorClass)}>
                 <Icon className="h-3.5 w-3.5" />
                 <span className="text-sm">
                     {formatPercentage(percentChange)}
@@ -43,3 +47,4 @@ export function PriceDeltaBadge({
         </div>
     );
 }
+

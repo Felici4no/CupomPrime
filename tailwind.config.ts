@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Puro Suco Indie - Tailwind Config
+ * Paleta minimalista: branco, preto, cinzas, cores de status
+ */
 const config: Config = {
     darkMode: ["class"],
     content: [
@@ -10,6 +14,7 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
+                // Base colors (CSS variables)
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
@@ -19,21 +24,9 @@ const config: Config = {
                     DEFAULT: "hsl(var(--primary))",
                     foreground: "hsl(var(--primary-foreground))",
                 },
-                secondary: {
-                    DEFAULT: "hsl(var(--secondary))",
-                    foreground: "hsl(var(--secondary-foreground))",
-                },
-                destructive: {
-                    DEFAULT: "hsl(var(--destructive))",
-                    foreground: "hsl(var(--destructive-foreground))",
-                },
                 muted: {
                     DEFAULT: "hsl(var(--muted))",
                     foreground: "hsl(var(--muted-foreground))",
-                },
-                accent: {
-                    DEFAULT: "hsl(var(--accent))",
-                    foreground: "hsl(var(--accent-foreground))",
                 },
                 popover: {
                     DEFAULT: "hsl(var(--popover))",
@@ -43,15 +36,42 @@ const config: Config = {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
-                excellent: "hsl(142, 76%, 36%)",
-                good: "hsl(173, 58%, 39%)",
-                neutral: "hsl(45, 93%, 47%)",
-                expensive: "hsl(0, 72%, 51%)",
+
+                // Status colors - usar APENAS para informação (status, alertas, erros)
+                // NUNCA como enfeite
+                excellent: "#16a34a", // green-600
+                good: "#2563eb", // blue-600
+                neutral: "#6b7280", // gray-500
+                expensive: "#dc2626", // red-600
             },
             borderRadius: {
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
+            },
+            fontFamily: {
+                sans: [
+                    '-apple-system',
+                    'BlinkMacSystemFont',
+                    '"Segoe UI"',
+                    'Roboto',
+                    'Oxygen',
+                    'Ubuntu',
+                    'Cantarell',
+                    '"Fira Sans"',
+                    '"Droid Sans"',
+                    '"Helvetica Neue"',
+                    'sans-serif',
+                ],
+                mono: [
+                    '"SF Mono"',
+                    'Monaco',
+                    '"Cascadia Code"',
+                    '"Roboto Mono"',
+                    'Consolas',
+                    '"Courier New"',
+                    'monospace',
+                ],
             },
         },
     },

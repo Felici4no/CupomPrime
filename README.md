@@ -128,12 +128,36 @@ Força atualização de um produto
 
 Veja `types/index.ts` para os contratos completos.
 
-## 🎨 Design
+## 🎨 Design - Puro Suco Indie
 
-- **Mobile-first**: Otimizado para dispositivos móveis
-- **Clean e Confiável**: Estética "fintech meets e-commerce"
-- **Informação em Primeiro Lugar**: Foco em dados, não em poluição visual
-- **Acessibilidade**: Contraste adequado, navegação por teclado, aria-labels
+**Estética "Puro Suco Indie"**: branco sólido, traços imperfeitos, cor apenas como informação.
+
+### Princípios Visuais
+
+- **Fundo Branco Sólido**: `#FFFFFF` — branco é "matéria", não transparência
+- **Traços Imperfeitos**: Bordas com jitter controlado via SVG (componentes `SketchFrame` e `SketchDivider`)
+- **Cor como Informação**: Verde/azul/vermelho apenas para status (EXCELENTE/BOM/CARO), nunca como enfeite
+- **Tipografia Simples**: System font + mono para números e valores
+- **Zero Enfeites**: Proibido gradients, glassmorphism, blur, neon, sombras realistas
+
+### Componentes Sketch
+
+- `SketchFrame`: Wrapper com borda SVG imperfeita
+- `SketchDivider`: Linha horizontal "torta"
+- `Button`, `Input`, `Card`: Todos com bordas sketch
+
+### Transparência Radical
+
+- Todo preço exibe "Coletado em DD/MM/AAAA às HH:mm"
+- Δ% vs média 90d, menor histórico, última coleta sempre visível
+- Sem linguagem de promessa, apenas dados
+
+### Acessibilidade
+
+- Contraste preto no branco
+- Navegação por teclado
+- ARIA labels
+- Mobile-first responsive
 
 ## 📊 Analytics
 

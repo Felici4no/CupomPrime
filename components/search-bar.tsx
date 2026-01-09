@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { Input } from "./ui/input";
 
 interface SearchBarProps {
     defaultValue?: string;
@@ -10,6 +11,10 @@ interface SearchBarProps {
     autoFocus?: boolean;
 }
 
+/**
+ * Barra de busca central
+ * Visual "Puro Suco Indie": Input com borda sketch
+ */
 export function SearchBar({
     defaultValue = "",
     placeholder = "Buscar produtos...",
@@ -28,16 +33,17 @@ export function SearchBar({
     return (
         <form onSubmit={handleSubmit} className="w-full max-w-2xl">
             <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <input
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600 z-10" />
+                <Input
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder={placeholder}
                     autoFocus={autoFocus}
-                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+                    className="w-full pl-12 pr-4 py-3"
                 />
             </div>
         </form>
     );
 }
+
